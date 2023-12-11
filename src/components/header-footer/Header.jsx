@@ -9,7 +9,7 @@ import {
     Collapse,
 } from "@material-tailwind/react";
 import Image from "next/image";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, UserRound } from "lucide-react";
 
 function Header() {
     const [openNav, setOpenNav] = React.useState(false);
@@ -68,28 +68,13 @@ function Header() {
     );
 
     return (
-        <Navbar className=" max-w-full rounded-none px-4 py-2 lg:px-10 lg:py-2">
+        <Navbar className="max-w-full rounded-none px-5 lg:px-20">
             <div className=" flex items-center justify-between text-blue-gray-900">
-                {/* <Typography
-                    as="a"
-                    href="#"
-                    className="mr-4 cursor-pointer py-1.5 font-medium"
-                >
-                    PreOwned
-                </Typography> */}
-                <Image src={"/logo.png"} width={100} height={100} />
+                <h1 className="font-logoFont text-[2.5rem]">VintageWatch</h1>
                 <div className="hidden lg:block">{navList}</div>
-                <div className="flex items-center gap-x-1">
-                    <Button variant="text" size="sm" className="hidden lg:inline-block">
-                        <span>Log In</span>
-                    </Button>
-                    <Button
-                        variant="gradient"
-                        size="sm"
-                        className="hidden lg:inline-block"
-                    >
-                        <span>Sign in</span>
-                    </Button>
+                <div className="hidden lg:flex items-center gap-1">
+                    <UserRound size={20} strokeWidth={1} />
+                    <h2>Log in or register</h2>
                 </div>
                 <IconButton
                     variant="text"
@@ -134,10 +119,10 @@ function Header() {
                     {navList}
                     <div className="flex items-center gap-x-1">
                         <Button fullWidth variant="text" size="sm" className="">
-                            <span>Log In</span>
-                        </Button>
-                        <Button fullWidth variant="gradient" size="sm" className="">
-                            <span>Sign in</span>
+                            <span className="flex items-center gap-1 justify-center">
+                                <UserRound size={20} strokeWidth={1} />
+                                <h2>Log in or register</h2>
+                            </span>
                         </Button>
                     </div>
                 </div>

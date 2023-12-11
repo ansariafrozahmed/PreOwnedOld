@@ -3,13 +3,32 @@ import React from 'react'
 import { Carousel, Typography, Button } from "@material-tailwind/react";
 
 const HeroSlider = () => {
+
+    const slideData = [
+        {
+            id: 1,
+            image: "https://images.secondmovement.com/media/banners/hm-hero/rolex-desktop-20-11-2023.jpg",
+            text: "Nothing more functional and fantastic than this Rolex Submariner Blueberry",
+        },
+        {
+            id: 2,
+            image: "https://images.secondmovement.com/media/banners/hm-hero/hublot-desktop-22-11-2023.jpg",
+            text: "Nothing more functional and fantastic than this Rolex Submariner Blueberry",
+        },
+        {
+            id: 3,
+            image: "https://images.secondmovement.com/media/banners/hm-hero/jaeger-desktop-20-11-2023.jpg",
+            text: "Nothing more functional and fantastic than this Rolex Submariner Blueberrys",
+        },
+    ]
+
     return (
         <>
-            <Carousel className="h-[250px] md:h-[500px]"
-                // prevArrow={false}
-                // nextArrow={false}
-                autoplay={true}
+            <Carousel className="h-[87vh]"
+                nextArrow={false}
+                prevArrow={false}
                 loop={true}
+                autoplay={true}
                 navigation={({ setActiveIndex, activeIndex, length }) => (
                     <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
                         {new Array(length).fill("").map((_, i) => (
@@ -21,28 +40,30 @@ const HeroSlider = () => {
                             />
                         ))}
                     </div>
-                )}>
-                <div className="relative h-full w-full">
-                    <img
-                        src="https://images.unsplash.com/photo-1601801958048-aa2e1c3e21e3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        alt="image 1"
-                        className="h-full w-full object-cover"
-                    />
-                </div>
-                <div className="relative h-full w-full">
-                    <img
-                        src="https://images.unsplash.com/photo-1511370235399-1802cae1d32f?q=80&w=2055&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        alt="image 1"
-                        className="h-full w-full object-cover"
-                    />
-                </div>
-                <div className="relative h-full w-full">
-                    <img
-                        src="https://images.unsplash.com/photo-1525342306245-c6a1e32087ce?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        alt="image 1"
-                        className="h-full w-full object-cover"
-                    />
-                </div>
+                )}
+            >
+                {
+                    slideData?.map((item) => (
+                        <div className="relative h-full w-full" key={item.id}>
+                            <img
+                                src={item.image}
+                                alt="image 2"
+                                className="h-full w-full object-cover object-center"
+                            />
+                            <div className="absolute inset-0 grid h-full w-full items-end bg-gradient-to-t from-black/70">
+                                <div className="w-3/4 pl-5 md:w-[40%] md:pl-20 lg:pl-20 ">
+                                    <Typography
+                                        variant="h2"
+                                        color="white"
+                                        className="mb-14 text-[2rem] lg:text-[3.5rem] font-normal font-logoFont"
+                                    >
+                                        {item.text}
+                                    </Typography>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
             </Carousel>
         </>
     )
