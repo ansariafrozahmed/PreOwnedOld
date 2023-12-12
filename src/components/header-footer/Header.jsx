@@ -1,133 +1,59 @@
-"use client"
-
+"use client";
+import { Menu, UserRound, X } from "lucide-react";
+import Link from "next/link";
 import React from "react";
-import {
-    Navbar,
-    Typography,
-    Button,
-    IconButton,
-    Collapse,
-} from "@material-tailwind/react";
-import Image from "next/image";
-import { ChevronDown, UserRound } from "lucide-react";
 
-function Header() {
-    const [openNav, setOpenNav] = React.useState(false);
+const Header = () => {
+  const [toggleNav, setToggleNav] = React.useState(true);
+  const handleMenu = () => {
+    setToggleNav(!toggleNav);
+  };
 
-    React.useEffect(() => {
-        window.addEventListener(
-            "resize",
-            () => window.innerWidth >= 960 && setOpenNav(false),
-        );
-    }, []);
-
-    const navList = (
-        <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-            <Typography
-                as="li"
-                variant="paragraph"
-                color="blue-gray"
-                className="flex items-center gap-x-2 p-1 font-medium"
+  return (
+    <div className="h-[11vh] px-5 lg:px-20 flex items-center w-full">
+      <div className="w-full flex items-center justify-between">
+        <div>
+          <Link href={"/"}>
+            <h1 className="font-logoFont text-[2rem] lg:text-[2.2rem]">
+              VintageWatch
+            </h1>
+          </Link>
+        </div>
+        <div className="hidden lg:block">
+          <ul className="flex gap-10 items-center justify-center">
+            <li>Buy a watch</li>
+            <li>Sell a watch</li>
+            <li>About us</li>
+            <li>Contact us</li>
+            <li>FAQs</li>
+          </ul>
+        </div>
+        <div className="flex items-center justify-center gap-2">
+          <Link
+            href={"/auth/login"}
+            className="flex gap-1.5 items-center hover:bg-gray-100 lg:px-5 p-3 rounded-full"
+          >
+            <UserRound size={25} strokeWidth={1} />
+            <h2 className="hidden lg:block text-sm">Log in or register</h2>
+          </Link>
+          <div className="lg:hidden">
+            {toggleNav ? (
+              <Menu size={30} onClick={handleMenu} className="cursor-pointer" />
+            ) : (
+              <X size={30} onClick={handleMenu} className="cursor-pointer" />
+            )}
+            <div
+              className={`absolute top-[15vh] left-0 w-full p-3 bg-white z-50 transition-all ease-in-out ${
+                toggleNav ? "scale-0" : "scale-100"
+              }`}
             >
-
-                <a href="#" className="flex gap-1 items-center">
-                    Buy a watch<ChevronDown strokeWidth={1} size={20} />
-                </a>
-            </Typography>
-            <Typography
-                as="li"
-                variant="paragraph"
-                color="blue-gray"
-                className="flex items-center gap-x-2 p-1 font-medium"
-            >
-                <a href="#" className="flex gap-1 items-center">
-                    Sell a watch<ChevronDown strokeWidth={1} size={20} />
-                </a>
-            </Typography>
-            <Typography
-                as="li"
-                variant="paragraph"
-                color="blue-gray"
-                className="flex items-center gap-x-2 p-1 font-medium"
-            >
-                <a href="#" className="flex items-center">
-                    Watch collections
-                </a>
-            </Typography>
-            <Typography
-                as="li"
-                variant="paragraph"
-                color="blue-gray"
-                className="flex items-center gap-x-2 p-1 font-medium"
-            >
-                <a href="#" className="flex items-center">
-                    About us
-                </a>
-            </Typography>
-        </ul>
-    );
-
-    return (
-        <Navbar className="max-w-full rounded-none px-5 lg:px-20">
-            <div className=" flex items-center justify-between text-blue-gray-900">
-                <h1 className="font-logoFont text-[2.5rem]">VintageWatch</h1>
-                <div className="hidden lg:block">{navList}</div>
-                <div className="hidden lg:flex items-center gap-1">
-                    <UserRound size={20} strokeWidth={1} />
-                    <h2>Log in or register</h2>
-                </div>
-                <IconButton
-                    variant="text"
-                    className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
-                    ripple={false}
-                    onClick={() => setOpenNav(!openNav)}
-                >
-                    {openNav ? (
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            className="h-6 w-6"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M6 18L18 6M6 6l12 12"
-                            />
-                        </svg>
-                    ) : (
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-6 w-6"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M4 6h16M4 12h16M4 18h16"
-                            />
-                        </svg>
-                    )}
-                </IconButton>
+              <h1 className="text-center">MENU</h1>
             </div>
-            <Collapse open={openNav}>
-                <div className="container mx-auto">
-                    {navList}
-                    <div className="flex items-center gap-x-1">
-                        <Button fullWidth variant="text" size="sm" className="">
-                            <span className="flex items-center gap-1 justify-center">
-                                <UserRound size={20} strokeWidth={1} />
-                                <h2>Log in or register</h2>
-                            </span>
-                        </Button>
-                    </div>
-                </div>
-            </Collapse>
-        </Navbar>
-    );
-}
-export default Header
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Header;

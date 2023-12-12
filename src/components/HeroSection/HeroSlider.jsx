@@ -24,7 +24,7 @@ const HeroSlider = () => {
 
     return (
         <>
-            <Carousel className="h-[87vh]"
+            <Carousel className="h-[85vh]"
                 nextArrow={false}
                 prevArrow={false}
                 loop={true}
