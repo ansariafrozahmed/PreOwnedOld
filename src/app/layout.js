@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/header-footer/Header";
 import Footer from "@/components/header-footer/Footer";
 import AnnouncementBar from "@/components/header-footer/AnnouncementBar";
+import NextTopLoader from "nextjs-toploader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <div>
+          <NextTopLoader showSpinner={false} />
           <AnnouncementBar />
           <Header />
           {children}
