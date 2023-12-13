@@ -53,12 +53,12 @@ const HeroSlider = () => {
               alt="image 2"
               className="h-full w-full object-cover object-center"
             />
-            <div className="absolute inset-0 grid h-full w-full items-end bg-gradient-to-t from-black/70">
-              <div className="w-3/4 pl-5 md:w-[40%] md:pl-20 lg:pl-20 ">
+            <div className="absolute inset-0 grid h-full w-full items-end bg-gradient-to-t from-black">
+              <div className="w-3/4 pl-5 md:w-[50%] md:pl-20 lg:pl-20 ">
                 <Typography
                   variant="h2"
                   color="white"
-                  className="mb-20 text-[2rem] lg:text-[3.5rem] font-normal font-logoFont"
+                  className="mb-20 text-[1.5rem] lg:text-[2.5rem] font-normal font-SecondaryFont"
                 >
                   {item.text}
                 </Typography>

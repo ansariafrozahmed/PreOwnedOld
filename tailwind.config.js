@@ -11,7 +11,7 @@ module.exports = withMT({
     extend: {
       fontFamily: {
         logoFont: ["Sacramento", "cursive"],
-        SummaryFont: ["Philosopher", "sans-serif"],
+        SecondaryFont: ["Philosopher", "sans-serif"],
       },
     },
   },
